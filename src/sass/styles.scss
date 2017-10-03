@@ -1,0 +1,27 @@
+@import "bootstrap.scss";
+
+html {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    width: 100%;
+    min-height: 100%;
+}
+
+main {
+    flex: 1;
+
+    > .row {
+        min-height: 100%;
+    }
+}
+
+.col {
+    &--bg {
+        &-dark {
+            background-color: rgba(12,222, 98, .5);
+        }
+    }
+}
