@@ -2,15 +2,53 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Document</title>
+	<title>Bookmarks AngularJS</title>
+
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
 	<link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 	<main class="container-fluid">
 		<div class="row">
-			<div class="col-2 col--bg-dark"></div>
-			<div class="col-10">
-				<p>Hello world</p>
+			<div class="col-sm-4 col-md-3 col-lg-2 col_bg_dark sidebar">
+				<nav>
+					<ul class="sidebar__nav">
+						<li><a href="#" class="active">All</a></li>
+						<li><a href="#">Development</a></li>
+						<li><a href="#">Design</a></li>
+						<li><a href="#">Exercise</a></li>
+						<li><a href="#">Humor</a></li>
+					</ul>
+				</nav>
+			</div>
+			<div class="col-sm-8 col-md-9 col-lg-10 main">
+				<div class="bookmarks">
+					<div class="bookmark">
+						<i class="fa fa-pencil bookmark__edit" title="Edit"></i>
+						<a class="bookmark__item" href="#" target="_blank">AngularJS</a>
+						<i class="fa fa-times bookmark__remove" title="Remove"></i>
+					</div>
+				</div>
+				<hr>
+				<form action="#" class="form">
+					<div class="form__title">Editing ...</div>
+					<div class="form-group">
+					    <label>Bookmark Title</label>
+					    <input type="text" class="form-control" placeholder="Enter title">
+					</div>
+					<div class="form-group">
+					    <label>Bookmark URL</label>
+					    <input type="text" class="form-control" placeholder="Enter URL">
+					</div>
+					<button type="submit" class="btn btn-info btn-lg">Save</button>
+					<button type="button" class="btn btn-secondary btn-lg pull-right">Cancel</button>
+				</form>
+				<div class="bookmark bookmark_btn">
+					<i class="fa fa-plus bookmark__create" title="Create"></i>
+					<div class="bookmark__item">Create bookmark</div>
+				</div>
 			</div>
 		</div>
 	</main>

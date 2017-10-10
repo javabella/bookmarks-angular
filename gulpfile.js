@@ -28,6 +28,11 @@ gulp.task('build:css', function () {
 		.pipe(gulp.dest('src/css/'));
 });
 
+gulp.task('copy:fonts', function () {
+	return gulp.src('src/fonts/*')
+		.pipe(gulp.dest('src/fonts/'));
+});
+
 gulp.task('clean', function () {
 	return del([
 		'src/css/*'
@@ -39,7 +44,7 @@ function reloader(done) {
 	done();
 }
 
-gulp.task('serve', gulp.series('build:sass', 'build:css', function(done) {
+gulp.task('serve', gulp.series('build:sass', 'build:css', 'copy:fonts', function(done) {
 	browserSync.init({
 		server: 'src',
 		port: 3000,
