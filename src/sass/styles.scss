@@ -52,7 +52,7 @@ main {
     display: block;
   }
 
-  a {
+  button {
     @extend .trans;
 
     font-size: $font-size-lg;
@@ -63,17 +63,25 @@ main {
     text-decoration: none;
     width: 100%;
     letter-spacing: 0.03em;
+    border: 0;
+    background: transparent;
+    text-align: left;
 
-    &:hover,
-    &:focus {
+    &:hover {
       background: $teal;
+    }
+
+    &.active {
+      background: $cyan;
+      color: white;
+    }
+
+    &:focus {
+    	outline: none;
     }
   }
 
-  .active {
-    background: $cyan;
-    color: white;
-  }
+
 }
 
 .bookmark {
@@ -141,4 +149,13 @@ main {
 
 		margin-bottom: 20px;
 	}
+}
+
+[ng\:cloak],
+[ng-cloak],
+[data-ng-cloak],
+[x-ng-cloak],
+.ng-cloak,
+.x-ng-cloak {
+  display: none !important;
 }
