@@ -10885,6 +10885,7 @@ main {
 
 .bookmark_btn {
   cursor: default;
+  margin-bottom: 15px;
 }
 
 .bookmark_btn > * {

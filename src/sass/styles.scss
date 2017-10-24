@@ -15,22 +15,22 @@ main {
   flex: 1;
 
   > .row {
-  	@media (min-width: map-get($grid-breakpoints, 'sm')) {
-			min-height: 100%;
-		}
+    @media (min-width: map-get($grid-breakpoints, "sm")) {
+      min-height: 100%;
+    }
   }
 }
 
 .col {
   &_bg {
     &_dark {
-      background-color: rgba(12,222, 98, .5);
+      background-color: rgba(12, 222, 98, 0.5);
     }
   }
 }
 
 .trans {
-    transition: 0.2s ease-out;
+  transition: 0.2s ease-out;
 }
 
 .sidebar {
@@ -42,10 +42,10 @@ main {
 
     margin-bottom: 0;
 
-		@media (min-width: map-get($grid-breakpoints, 'sm')) {
-			margin-top: 30px;
-  		margin-bottom: 30px;
-		}
+    @media (min-width: map-get($grid-breakpoints, "sm")) {
+      margin-top: 30px;
+      margin-bottom: 30px;
+    }
   }
 
   li {
@@ -77,78 +77,77 @@ main {
     }
 
     &:focus {
-    	outline: none;
+      outline: none;
     }
   }
-
-
 }
 
 .bookmark {
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-	align-items: center;
-	flex-wrap: nowrap;
-	padding: 10px 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: nowrap;
+  padding: 10px 5px;
 
-	&s {
-		margin-top: 30px;
-	}
+  &s {
+    margin-top: 30px;
+  }
 
-	& > * {
-		font-size: $font-size-lg;
-		line-height: 1.2;
-	}
+  & > * {
+    font-size: $font-size-lg;
+    line-height: 1.2;
+  }
 
-	&__edit,
-	&__create {
-		margin-right: 15px;
-	}
+  &__edit,
+  &__create {
+    margin-right: 15px;
+  }
 
-	&__remove {
-		margin-left: 15px;
-	}
+  &__remove {
+    margin-left: 15px;
+  }
 
-	&__item {
-		margin-left: 0;
-		margin-right: auto;
-	}
+  &__item {
+    margin-left: 0;
+    margin-right: auto;
+  }
 
-	&__edit,
-	&__remove {
-		&:hover,
-		&:focus {
-			color: theme-color("primary");
-		}
-	}
+  &__edit,
+  &__remove {
+    &:hover,
+    &:focus {
+      color: theme-color("primary");
+    }
+  }
 
-	&_btn {
-		cursor: default;
+  &_btn {
+    cursor: default;
+    margin-bottom: 15px;
 
-		& > * {
-			@extend .trans;
+    & > * {
+      @extend .trans;
 
-			color: $gray-700;
-		}
+      color: $gray-700;
+    }
 
-		&:hover,
-		&:focus {
-			& > * {
-				color: theme-color("primary");
-			}
-		}
-	}
+    &:hover,
+    &:focus {
+      & > * {
+        color: theme-color("primary");
+      }
+    }
+  }
 }
 
 .form {
-	margin-bottom: 20px;
+  margin-bottom: 20px;
 
-	&__title {
-		@extend .h4;
+  &__title {
+    @extend .h4;
 
-		margin-bottom: 20px;
-	}
+    margin-bottom: 20px;
+  }
 }
 
 [ng\:cloak],

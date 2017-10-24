@@ -31,7 +31,7 @@
 			<div class="col-sm-8 col-md-9 col-lg-10 main">
 				<div class="bookmarks">
 					<div class="bookmark" ng-repeat="bookmark in main.bookmarks | filter: {category: main.currentCategory.name}">
-						<i class="fa fa-pencil bookmark__edit" title="Edit"></i>
+						<i class="fa fa-pencil bookmark__edit" title="Edit" ng-click="main.startEditing(bookmark)"></i>
 						<a class="bookmark__item" href="{{bookmark.url}}" target="_blank">
 							{{bookmark.title}}
 						</a>
@@ -39,8 +39,26 @@
 					</div>
 				</div>
 				<hr>
-				<form action="#" class="form" ng-show="false">
-					<div class="form__title">Editing ...</div>
+				<form role="form" class="form" ng-show="main.shouldShowEditing()" ng-submit="main.updateBookmark(main.editedBookmark)" novalidate>
+					<div class="form__title">Editing {{main.editedBookmark.title}}</div>
+					<div class="form-group">
+					    <label>Bookmark Title</label>
+					    <input type="text" class="form-control" placeholder="Enter title" ng-model="main.editedBookmark.title">
+					</div>
+					<div class="form-group">
+					    <label>Bookmark URL</label>
+					    <input type="text" class="form-control" placeholder="Enter URL" ng-model="main.editedBookmark.url">
+					</div>
+					<button type="submit" class="btn btn-info btn-lg">Save</button>
+					<button type="button" class="btn btn-secondary btn-lg pull-right" ng-click="main.cancelEditing()">Cancel</button>
+				</form>
+
+				<div class="bookmark bookmark_btn" ng-if="main.shouldShowCreating()" ng-click="main.startCreating()">
+					<i class="fa fa-plus bookmark__create" title="Create"></i>
+					<div class="bookmark__item">Create bookmark</div>
+				</div>
+				<form role="form" class="form" ng-show="main.isCreating">
+					<div class="form__title">Create bookmark</div>
 					<div class="form-group">
 					    <label>Bookmark Title</label>
 					    <input type="text" class="form-control" placeholder="Enter title">
@@ -50,12 +68,8 @@
 					    <input type="text" class="form-control" placeholder="Enter URL">
 					</div>
 					<button type="submit" class="btn btn-info btn-lg">Save</button>
-					<button type="button" class="btn btn-secondary btn-lg pull-right">Cancel</button>
+					<button type="button" class="btn btn-secondary btn-lg pull-right" ng-click="main.cancelEditing()">Cancel</button>
 				</form>
-				<div class="bookmark bookmark_btn" ng-show="false">
-					<i class="fa fa-plus bookmark__create" title="Create"></i>
-					<div class="bookmark__item">Create bookmark</div>
-				</div>
 			</div>
 		</div>
 	</main>
