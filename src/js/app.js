@@ -13,6 +13,7 @@ angular.module('bookmarksApp', [])
 		main.editedBookmark = null;
 		main.isEditing = false;
 		main.isCreating = false;
+		main.newBookmark = {};
 
 		main.setCurrentCategory = function(category) {
 			main.currentCategory = category;
@@ -36,7 +37,6 @@ angular.module('bookmarksApp', [])
 			{"id": 17, "title": "Wimp", "url": "http://wimp.com", "category": "Humor" },
 			{"id": 18, "title": "Dump", "url": "http://dump.com", "category": "Humor" }
 		];
-		console.log(main);
 
 		main.shouldShowCreating = function() {
 			return main.currentCategory && !main.isEditing;
@@ -64,6 +64,7 @@ angular.module('bookmarksApp', [])
 
 		main.cancelCreating = function() {
 			main.isCreating = false;
+			main.resetCreateForm();
 		}
 
 		main.updateBookmark = function(editedBookmark) {
@@ -78,5 +79,34 @@ angular.module('bookmarksApp', [])
 			main.bookmarks[i] = editedBookmark;
 			main.isEditing = false;
 			main.editedBookmark = null;
+		}
+
+		main.createBookmark = function(bookmark) {
+			bookmark.id = +(new Date());
+			bookmark.category = main.currentCategory.name;
+			main.bookmarks.push(bookmark);
+
+			main.resetCreateForm();
+		}
+
+		main.resetCreateForm = function() {
+			main.newBookmark = {
+				id: '',
+				title: '',
+				url: '',
+				category: ''
+			};
+		}
+
+		main.removeBookmark = function(bookmark) {
+			var index = null;
+			for (var i = 0; i < main.bookmarks.length; i++) {
+				if (main.bookmarks[i].id === bookmark.id) {
+					index = i;
+					break;
+				}
+			}
+
+			main.bookmarks.splice(index, 1);
 		}
 	});
