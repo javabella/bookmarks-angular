@@ -1,4 +1,7 @@
-angular.module('bookmarksApp', [])
+angular.module('bookmarksApp', [
+		'categories',
+		'categories.bookmarks'
+	])
 	.controller('MainCtrl', function() {
 		var main = this;
 
