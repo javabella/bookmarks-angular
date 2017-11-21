@@ -7,74 +7,16 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
+	<base href="/">
 	<link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
-	<main class="container-fluid" ng-cloak ng-controller="MainCtrl as main">
-		<div class="row">
-			<div class="col-sm-4 col-md-3 col-lg-2 col_bg_dark sidebar">
-				<nav>
-					<ul class="sidebar__nav">
-						<li>
-							<button type="button" ng-class="{'active': main.isCurrentCategory('All')}" ng-click="main.setCurrentCategory(null)">
-								All
-							</button>
-						</li>
-						<li ng-repeat="category in main.categories">
-							<button type="button" ng-class="{'active': main.isCurrentCategory(category)}" ng-click="main.setCurrentCategory(category)">
-								{{category.name}}
-							</button>
-						</li>
-					</ul>
-				</nav>
-			</div>
-			<div class="col-sm-8 col-md-9 col-lg-10 main">
-				<div class="bookmarks">
-					<div class="bookmark" ng-repeat="bookmark in main.bookmarks | filter: {category: main.currentCategory.name}">
-						<i class="fa fa-pencil bookmark__edit" title="Edit" ng-click="main.startEditing(bookmark)"></i>
-						<a class="bookmark__item" href="{{bookmark.url}}" target="_blank">
-							{{bookmark.title}}
-						</a>
-						<i class="fa fa-times bookmark__remove" title="Remove" ng-click="main.removeBookmark(bookmark)"></i>
-					</div>
-				</div>
-				<hr>
-				<form role="form" class="form" ng-show="main.shouldShowEditing()" ng-submit="main.updateBookmark(main.editedBookmark)" novalidate>
-					<div class="form__title">Editing {{main.editedBookmark.title}}</div>
-					<div class="form-group">
-					    <label>Bookmark Title</label>
-					    <input type="text" class="form-control" placeholder="Enter title" ng-model="main.editedBookmark.title">
-					</div>
-					<div class="form-group">
-					    <label>Bookmark URL</label>
-					    <input type="text" class="form-control" placeholder="Enter URL" ng-model="main.editedBookmark.url">
-					</div>
-					<button type="submit" class="btn btn-info btn-lg">Save</button>
-					<button type="button" class="btn btn-secondary btn-lg pull-right" ng-click="main.cancelEditing()">Cancel</button>
-				</form>
+	<main class="container-fluid" ng-cloak ng-view ng-controller="MainCtrl as main">
 
-				<div class="bookmark bookmark_btn" ng-if="main.shouldShowCreating()" ng-click="main.startCreating()">
-					<i class="fa fa-plus bookmark__create" title="Create"></i>
-					<div class="bookmark__item">Create bookmark</div>
-				</div>
-				<form role="form" class="form" ng-show="main.isCreating" ng-submit="main.createBookmark(main.newBookmark)" novalidate>
-					<div class="form__title">Create bookmark</div>
-					<div class="form-group">
-					    <label>Bookmark Title</label>
-					    <input type="text" class="form-control" placeholder="Enter title" ng-model="main.newBookmark.title">
-					</div>
-					<div class="form-group">
-					    <label>Bookmark URL</label>
-					    <input type="text" class="form-control" placeholder="Enter URL" ng-model="main.newBookmark.url">
-					</div>
-					<button type="submit" class="btn btn-info btn-lg">Save</button>
-					<button type="button" class="btn btn-secondary btn-lg pull-right" ng-click="main.cancelCreating()">Cancel</button>
-				</form>
-			</div>
-		</div>
 	</main>
 
 	<script defer src="assets/angular.js"></script>
+	<script defer src="assets/angular-route.js"></script>
 	<script defer src="assets/app.js"></script>
 
 	<script defer src="app/categories/categories.js"></script>

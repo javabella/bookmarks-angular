@@ -12256,6 +12256,8 @@ main {
   border: 0;
   background: transparent;
   text-align: left;
+  -webkit-border-radius: 0;
+          border-radius: 0;
 }
 
 .sidebar button:hover {

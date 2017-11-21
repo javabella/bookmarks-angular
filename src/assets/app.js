@@ -1,7 +1,17 @@
 angular.module('bookmarksApp', [
+		'ngRoute',
 		'categories',
 		'categories.bookmarks'
 	])
+	.config(function($routeProvider, $locationProvider) {
+		$routeProvider
+			.when('/', {
+				templateUrl: 'app/categories/categories.tmpl.html',
+				controller: 'MainCtrl'
+			});
+
+		$locationProvider.html5Mode(true);
+	})
 	.controller('MainCtrl', function() {
 		var main = this;
 

@@ -45,8 +45,8 @@ gulp.task('serve', gulp.series('build:sass', 'build:css', function(done) {
 		port: 3000,
 		open: true
 	});
-	gulp.watch('src/assets/sass/**/*', gulp.series('build:sass', reloader));
-	gulp.watch('src/assets/css/*.css', gulp.series('build:css', reloader))
+	gulp.watch('src/assets/sass/**/*', gulp.series('build:sass', 'build:css',reloader));
+	//gulp.watch('src/assets/css/*.css', gulp.series('build:css', reloader))
 	gulp.watch([
 		'src/*.html', 'src/**/*.js'
 	], gulp.series(reloader));
